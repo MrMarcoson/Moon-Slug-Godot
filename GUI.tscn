@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://textures/heart.png" type="Texture" id=1]
+[ext_resource path="res://textures/Font/slkscre.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=3]
+size = 8
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 8
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 8
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[node name="Control" type="Control"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="."]
+margin_top = 116.287
+margin_right = 97.0
+margin_bottom = 133.287
+custom_fonts/font = SubResource( 3 )
+text = "Score: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score2" type="Label" parent="."]
+visible = false
+margin_left = -16.2965
+margin_top = 80.4723
+margin_right = 113.703
+margin_bottom = 101.473
+custom_fonts/font = SubResource( 4 )
+text = "by: Marek 
+Kasprowicz"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="game_over" type="Label" parent="."]
+visible = false
+margin_left = -19.7601
+margin_top = 17.4393
+margin_right = 119.24
+margin_bottom = 62.4393
+custom_fonts/font = SubResource( 5 )
+text = "GAME OVER
+
+PRESS [Y] 
+TO TRY AGAIN"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hp1" type="Sprite" parent="."]
+position = Vector2( 73.9833, 121.653 )
+texture = ExtResource( 1 )
+
+[node name="hp2" type="Sprite" parent="."]
+position = Vector2( 89.9833, 121.763 )
+texture = ExtResource( 1 )
+
+[node name="hp3" type="Sprite" parent="."]
+position = Vector2( 81.9833, 121.763 )
+texture = ExtResource( 1 )

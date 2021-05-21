@@ -1,0 +1,38 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://textures/Player/moonslug_walk2.png" type="Texture" id=2]
+[ext_resource path="res://textures/Player/moonslug_idle2.png" type="Texture" id=3]
+[ext_resource path="res://textures/Player/moonslug_walk3.png" type="Texture" id=4]
+[ext_resource path="res://textures/Player/moonslug_idle.png" type="Texture" id=5]
+[ext_resource path="res://textures/Player/moonslug_walk1.png" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 4.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8.80195, 7.94763 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" groups=[
+"Player",
+]]
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "Idle"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.71796, 1.25643 )
+shape = SubResource( 2 )

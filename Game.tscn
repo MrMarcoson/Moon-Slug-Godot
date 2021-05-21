@@ -1,0 +1,70 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://textures/Ground.png" type="Texture" id=2]
+[ext_resource path="res://textures/Sky.png" type="Texture" id=3]
+[ext_resource path="res://Game.gd" type="Script" id=4]
+[ext_resource path="res://GUI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://music/music.ogg" type="AudioStream" id=6]
+[ext_resource path="res://music/pointwav.wav" type="AudioStream" id=7]
+[ext_resource path="res://music/hit.wav" type="AudioStream" id=8]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 96, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 96, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 3 )
+region = Rect2( 96, 96, 96, 96 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+} ]
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Sky" type="AnimatedSprite" parent="."]
+position = Vector2( 47.9459, 48.0485 )
+frames = SubResource( 5 )
+frame = 1
+playing = true
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 32.2516, 83.5141 )
+
+[node name="Ground" type="Sprite" parent="."]
+position = Vector2( 47.9562, 131.174 )
+texture = ExtResource( 2 )
+
+[node name="GUI" parent="." instance=ExtResource( 5 )]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Soundtrack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -10.0
+mix_target = 1
+
+[node name="Hit_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -10.0
+
+[node name="Score_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -10.0
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
